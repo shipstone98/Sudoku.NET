@@ -13,7 +13,7 @@ namespace Sudoku
         public const int MaxSize = 9;
 
         private readonly int _BlockSize;
-        private readonly SudokuCell[,] _Cells;
+        internal readonly SudokuCell[,] _Cells;
 
         /// <summary>
         /// Gets the number of rows and columns in the <see cref="SudokuPuzzle"/>.
@@ -95,7 +95,7 @@ namespace Sudoku
 		{
             if (puzzle is null)
 			{
-                throw new ArgumentOutOfRangeException(nameof (puzzle));
+                throw new ArgumentNullException(nameof (puzzle));
 			}
 
             this._BlockSize = puzzle._BlockSize;
