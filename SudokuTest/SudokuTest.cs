@@ -80,5 +80,31 @@ namespace SudokuTest
 
         [TestMethod]
         public void TestConstructor_ZeroSize() => Assert.ThrowsException<ArgumentOutOfRangeException>(() => new SudokuPuzzle(0));
+
+        [TestMethod]
+        public void TestVerifySize_InvalidSizes()
+        {
+            Assert.IsFalse(SudokuPuzzle.VerifySize(2));
+            Assert.IsFalse(SudokuPuzzle.VerifySize(SudokuPuzzle.MaxSize - 1));
+        }
+
+        [TestMethod]
+        public void TestVerifySize_MaximumSize() => Assert.IsFalse(SudokuPuzzle.VerifySize(Int32.MaxValue));
+
+        [TestMethod]
+        public void TestVerifySize_MaximumPossibleSize() => Assert.IsFalse(SudokuPuzzle.VerifySize(SudokuPuzzle.MaxSize + 1));
+
+        [TestMethod]
+        public void TestVerifySize_MinimumSize() => Assert.IsFalse(SudokuPuzzle.VerifySize(Int32.MinValue));
+
+        [TestMethod]
+        public void TestVerifySize_NegativeOneSize() => Assert.IsFalse(SudokuPuzzle.VerifySize(-1));
+
+        [TestMethod]
+        public void TestVerifySize_ValidSizes()
+        {
+            Assert.IsTrue(SudokuPuzzle.VerifySize(1));
+            Assert.IsTrue(SudokuPuzzle.VerifySize(SudokuPuzzle.MaxSize));
+        }
     }
 }
